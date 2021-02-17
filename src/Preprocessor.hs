@@ -208,9 +208,13 @@ ppFile env name = do
 -- and also removes leading and ending spaces unless the value is a block.
 -- It returns the new environment and the preprocessed value.
 ppAndStrip :: Env -> Val -> IO (Env, String)
+ppAndStrip env (Val s) =
+    pp env s
+{-
 ppAndStrip env (Val s) = do
     (env', doc) <- pp env s
     return (env', strip doc)
+-}
 ppAndStrip env (Block s) =
     pp env s
 
